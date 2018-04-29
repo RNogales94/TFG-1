@@ -1,33 +1,20 @@
-import urllib.request
 import pandas
 import xgboost
+from sklearn import datasets
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import LabelEncoder
 
-# URL for the Iris dataset (UCI Machine Learning Repository)
-url = "http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
-
-# download the file
-raw_data = urllib.request.urlopen(url)
-
-# load the CSV file as a numpy matrix
-data = pandas.read_csv(raw_data, header=None)
-dataset = data.values
+# import dataset
+iris = datasets.load_iris()
 
 # split data into X and y
-X = dataset[:, 0:4]
-Y = dataset[:, 4]
-
-# encode string class values as integers
-label_encoder = LabelEncoder()
-label_encoder = label_encoder.fit(Y)
-label_encoded_y = label_encoder.transform(Y)
+X = iris.data
+Y = iris.target
 
 seed = 7
 test_size = 0.33
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X,
-																	label_encoded_y,
+																	Y,
 																	test_size=test_size,
 																	random_state=seed)
 
