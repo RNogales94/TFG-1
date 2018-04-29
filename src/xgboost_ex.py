@@ -1,7 +1,7 @@
 import urllib.request
 import pandas
 import xgboost
-from sklearn import cross_validation
+from sklearn import model_selection
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 
@@ -26,7 +26,7 @@ label_encoded_y = label_encoder.transform(Y)
 
 seed = 7
 test_size = 0.33
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X,
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X,
 																	label_encoded_y,
 																	test_size=test_size,
 																	random_state=seed)
