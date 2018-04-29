@@ -32,11 +32,13 @@ X_train, X_test, y_train, y_test = model_selection.train_test_split(X,
 																	test_size=test_size,
 																	random_state=seed)
 
-clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1)
-clf.fit(X_train, y_train)
+model = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1)
+model.fit(X_train, y_train)
+
+print(model)
 
 # make predictions for test data
-y_pred = clf.predict(X_test)
+y_pred = model.predict(X_test)
 predictions = [round(value) for value in y_pred]
 
 # evaluate predictions

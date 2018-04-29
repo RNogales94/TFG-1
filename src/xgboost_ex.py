@@ -39,12 +39,10 @@ model.fit(X_train, y_train)
 print(model)
 
 # make the predictions on the test data
-
 y_pred = model.predict(X_test)
-predictions = [round(value) for value in y_pred]
 
+predictions = [round(value) for value in y_pred]
 # determine the accuracy of the classifer
 
 accuracy = accuracy_score(y_test, predictions)
-
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
